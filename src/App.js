@@ -55,7 +55,7 @@ function App() {
         >
         {yAxisLabel}
         </text>
-
+""
         <AxisBottom xScale={xScale} innerHeight={innerHeight} tickFormat={xAxisTickFormat} tickOffset={5} />
 
         <text className="axis-label" x={innerWidth / 2} y={innerHeight + xAxisLabelOffset}>{xAxisLabel}</text>

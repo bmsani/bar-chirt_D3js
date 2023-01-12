@@ -1,4 +1,4 @@
-import { extent, format, max, scaleLinear, ticks } from "d3";
+import { extent, timeFormat, max, scaleLinear, scaleTime, ticks } from "d3";
 import AxisBottom from "./component/AxisBottom";
 import AxisLeft from "./component/AxisLeft";
 import Bars from "./component/Bars";
@@ -21,23 +21,22 @@ function App() {
 
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-  const xValue = d => d['sepal.length']
-  const xAxisLabel = 'sepal length';
-  const yValue = d => d['sepal.width']
-  const yAxisLabel = 'sepal width';
+  const xValue = d => d.timestamp
+  const xAxisLabel = 'Time';
+  const yValue = d => d.temperature
+  const yAxisLabel = 'Temperature';
 
 
-  const siFormat = format('.2s');
-  const xAxisTickFormat = tickValue => siFormat(tickValue).replace("G", "B")
+  const xAxisTickFormat = timeFormat("%a");
 
-  const xScale = scaleLinear()
+  const xScale = scaleTime()
     .domain(extent(data, xValue))
     .range([0, innerWidth])
     .nice();
 
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
-    .range([0, innerHeight])
+    .range([innerHeight,0])
 
 
   return (

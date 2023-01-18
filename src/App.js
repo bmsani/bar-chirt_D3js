@@ -37,6 +37,7 @@ function App() {
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
     .range([innerHeight,0])
+    .nice();
 
 
   return (
@@ -46,7 +47,7 @@ function App() {
         <AxisLeft
           yScale={yScale}
           innerWidth={innerWidth}
-          tickOffset={5}
+          tickOffset={7}
         />
         <text 
         className="axis-label"
@@ -56,7 +57,7 @@ function App() {
         {yAxisLabel}
         </text>
 ""
-        <AxisBottom xScale={xScale} innerHeight={innerHeight} tickFormat={xAxisTickFormat} tickOffset={5} />
+        <AxisBottom xScale={xScale} innerHeight={innerHeight} tickFormat={xAxisTickFormat} tickOffset={7} />
 
         <text className="axis-label" x={innerWidth / 2} y={innerHeight + xAxisLabelOffset}>{xAxisLabel}</text>
         <Bars
